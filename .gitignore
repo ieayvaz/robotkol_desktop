@@ -318,6 +318,9 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
+#visual studio out folder
+out
+
 # OpenCover UI analysis results
 OpenCover/
 
