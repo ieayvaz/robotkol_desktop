@@ -1,0 +1,5 @@
+C:/Users/collo/source/repos/robotel_desktop/out/build/x64-Debug (varsayılan)/CMakeFiles/edit_cache.dir
+C:/Users/collo/source/repos/robotel_desktop/out/build/x64-Debug (varsayılan)/CMakeFiles/rebuild_cache.dir
+C:/Users/collo/source/repos/robotel_desktop/out/build/x64-Debug (varsayılan)/robotel_desktop/CMakeFiles/robotel_desktop.dir
+C:/Users/collo/source/repos/robotel_desktop/out/build/x64-Debug (varsayılan)/robotel_desktop/CMakeFiles/edit_cache.dir
+C:/Users/collo/source/repos/robotel_desktop/out/build/x64-Debug (varsayılan)/robotel_desktop/CMakeFiles/rebuild_cache.dir
