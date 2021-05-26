@@ -198,6 +198,9 @@ robotel_desktop_BINARY_DIR:STATIC=C:/Users/collo/source/repos/robotel_desktop/ou
 //Value Computed by CMake
 robotel_desktop_SOURCE_DIR:STATIC=C:/Users/collo/source/repos/robotel_desktop
 
+//The directory containing a CMake configuration file for xwWidgets.
+xwWidgets_DIR:PATH=xwWidgets_DIR-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries
