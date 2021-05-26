@@ -319,7 +319,7 @@ __pycache__/
 *.xsd.cs
 
 #visual studio out folder
-/out
+out/
 
 # OpenCover UI analysis results
 OpenCover/
