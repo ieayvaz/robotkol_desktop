@@ -2,6 +2,9 @@
 
 #include "rk_application.h"
 
+namespace rk
+{
+  
 rk_application::rk_application()
   : Gtk::Application("org.ie.robotkol") {}
 
@@ -31,4 +34,5 @@ void rk_application::on_activate()
 void rk_application::on_hide_window(Gtk::Window* window)
 {
   delete window;
+}
 }

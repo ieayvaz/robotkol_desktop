@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv)
 {
-  auto app = rk_application::create();
+  auto app = rk::rk_application::create();
   app->run(argc, argv);
   return 0;
 }

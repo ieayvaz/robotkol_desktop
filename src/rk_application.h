@@ -7,6 +7,9 @@
 
 #include "main_window.h"
 
+namespace rk
+{
+  
 class rk_application : public Gtk::Application
 {
  protected:
@@ -22,5 +25,5 @@ class rk_application : public Gtk::Application
   main_window* create_window();
   void on_hide_window(Gtk::Window* window);
 };
-
+}
 #endif
