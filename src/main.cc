@@ -1,8 +1,9 @@
-#include <iostream>
+#include "rk_application.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-  std::cout << "Berkeley UNIX" << std::endl;
+  auto app = rk_application::create();
+  app->run(argc, argv);
   return 0;
 }
 
