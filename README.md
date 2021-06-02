@@ -1,2 +1,2 @@
-# robotel_desktop
+# robotkol_desktop
 robotel kontrol arayüzü.
