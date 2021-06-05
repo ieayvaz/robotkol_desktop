@@ -20,11 +20,9 @@ public:
   void set_axis_angle(axis_type axis_t, double angle);
   void set_active();
   void set_deactive();
+  void set_gripper_status(bool status);
   
 private:
-  std::array<double, 4> axis_angles;
-  
-  std::string data;
   robot_interface _robot_inf;
 };
 }

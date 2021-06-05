@@ -3,6 +3,7 @@
 #include "axis.h"
 #include <iostream>
 #include <sstream>
+#include <utility>
 
 namespace rk
 {
@@ -10,13 +11,13 @@ namespace rk
 void axis_handler::set_deactive()
 {
   _robot_inf.send_data<char>('<');
-  std::cout << ">" << std::endl;
+  _robot_inf.send_data<char>('\n');
 }
   
 void axis_handler::set_active()
 {
   _robot_inf.send_data<char>('>');
-  std::cout << "<" << std::endl;
+  _robot_inf.send_data<char>('\n');
 }
   
 void axis_handler::set_axis_angle(axis_type axis_t, double angle)
@@ -41,7 +42,14 @@ void axis_handler::set_axis_angle(axis_type axis_t, double angle)
     }
   
   _robot_inf.send_data<std::string>(ss.str());
-  std::cout << ss.str();
+}
+
+void axis_handler::set_gripper_status(bool status)
+{
+  _robot_inf.send_data<std::string>("G:");
+  if(status)
+    _robot_inf.send_data<int>(std::move(status));
+  _robot_inf.send_data<char>('\n');
 }
   
 }

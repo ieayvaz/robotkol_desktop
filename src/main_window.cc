@@ -8,7 +8,8 @@ namespace rk
 main_window::main_window(BaseObjectType* cobject,
 			 const Glib::RefPtr<Gtk::Builder>& refBuilder)
   : _refBuilder(refBuilder),
-    Gtk::Window(cobject)
+    Gtk::Window(cobject),
+    _gripper_switch(nullptr)
 {
   for(auto& ref_scale : _scales)
     {
@@ -20,6 +21,11 @@ main_window::main_window(BaseObjectType* cobject,
   _refBuilder->get_widget("eksen_3_scale", _scales[2]);
   _refBuilder->get_widget("eksen_4_scale", _scales[3]);
 
+  _refBuilder->get_widget("gripper_switch", _gripper_switch);
+
+  _gripper_switch->signal_clicked().connect
+    (sigc::mem_fun(*this, &main_window::on_gripper_toggled));
+    
   _scales[0]->signal_value_changed().connect
     (sigc::mem_fun(*this, &main_window::on_axis_1_changed));
 
@@ -46,25 +52,8 @@ main_window* main_window::create()
   auto builder = Gtk::Builder::create_from_file(file_path);
 
   main_window* window= nullptr;
-  try
-    {
-      builder->get_widget_derived("main_window", window);
-    }
-  catch(const Glib::FileError& ex)
-    {
-      throw std::runtime_error("Dosya hatası : " + file_path +
-			       "\n" + ex.what() + "\n");
-    }
-  catch(const Glib::MarkupError& ex)
-    {
-      throw std::runtime_error("Glade yazım hatası : " + file_path +
-			       "\n" + ex.what() + "\n");
-    }
-  catch(const Gtk::BuilderError& ex)
-    {
-      throw std::runtime_error("Glade builder hatası : " + file_path +
-			       "\n" + ex.what() + "\n");
-    }
+  builder->get_widget_derived("main_window", window);
+	
   return window;
 }
 
@@ -86,6 +75,14 @@ void main_window::on_axis_3_changed()
 void main_window::on_axis_4_changed()
 {
   _axis_handler.set_axis_angle(axis_type::axis_4, _scales[3]->get_value());
+}
+
+void main_window::on_gripper_toggled()
+{
+  if(_gripper_switch->get_active())
+    _axis_handler.set_gripper_status(true);
+  else
+    _axis_handler.set_gripper_status(false);
 }
   
 }

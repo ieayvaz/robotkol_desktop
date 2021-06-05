@@ -427,7 +427,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="gripper_switch">
+                  <object class="GtkCheckButton">
                     <property name="label" translatable="yes">
 </property>
                     <property name="visible">True</property>

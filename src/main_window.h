@@ -10,23 +10,27 @@ namespace rk
 {
 class main_window : public Gtk::Window
 {
- public:
+public:
   main_window(BaseObjectType* cobject
 	      ,const Glib::RefPtr<Gtk::Builder>& refBuilder);
   ~main_window();
   
   static main_window* create();
-
- protected:
+  
+protected:
   Glib::RefPtr<Gtk::Builder> _refBuilder;
   
 private:
+  void on_gripper_toggled();
+  
   void on_axis_1_changed();
   void on_axis_2_changed();
   void on_axis_3_changed();
   void on_axis_4_changed();
   
   std::array<Gtk::Scale*, 4> _scales;
+  Gtk::CheckButton* _gripper_switch;
+  
   axis_handler _axis_handler;
 };
 }
