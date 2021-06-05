@@ -48,7 +48,7 @@ void axis_handler::set_gripper_status(bool status)
 {
   _robot_inf.send_data<std::string>("G:");
   if(status)
-    _robot_inf.send_data<int>(std::move(status));
+    _robot_inf.send_data<bool>(std::move(status));
   _robot_inf.send_data<char>('\n');
 }
   
