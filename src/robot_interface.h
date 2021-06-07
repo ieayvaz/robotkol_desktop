@@ -14,13 +14,15 @@ public:
   {
     _buffer.str(std::string());
     _buffer << data;
-    out_console(_buffer.str());
+    std::cout <<_buffer.str();
   }
-private:
-  void out_console(std::string content)
+
+  void send_record(const std::string& record)
   {
-    std::cout << content;
+    std::cout << record;
   }
+  
+private:
   std::stringstream _buffer;
 };
 }

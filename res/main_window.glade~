@@ -32,6 +32,11 @@
     <property name="can_focus">False</property>
     <property name="stock">gtk-open</property>
   </object>
+  <object class="GtkImage" id="oynat_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-media-play</property>
+  </object>
   <object class="GtkImage" id="quit_menu_button">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -427,7 +432,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton">
+                  <object class="GtkCheckButton" id="gripper_switch">
                     <property name="label" translatable="yes">
 </property>
                     <property name="visible">True</property>
@@ -465,7 +470,24 @@
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
             <child>
-              <placeholder/>
+              <object class="GtkButton" id="play_button">
+                <property name="label" translatable="yes">Oynat</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">end</property>
+                <property name="valign">end</property>
+                <property name="margin_right">10</property>
+                <property name="margin_bottom">20</property>
+                <property name="hexpand">True</property>
+                <property name="image">oynat_image</property>
+                <property name="always_show_image">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
             </child>
             <child>
               <object class="GtkButton" id="kayit_button">
@@ -477,7 +499,6 @@
                 <property name="valign">end</property>
                 <property name="margin_right">20</property>
                 <property name="margin_bottom">20</property>
-                <property name="hexpand">True</property>
                 <property name="image">record_icon</property>
                 <property name="always_show_image">True</property>
               </object>

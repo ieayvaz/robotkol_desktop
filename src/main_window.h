@@ -21,7 +21,11 @@ protected:
   Glib::RefPtr<Gtk::Builder> _refBuilder;
   
 private:
+  bool _is_recording;
   void on_gripper_toggled();
+
+  void on_record_clicked();
+  void on_play_clicked();
   
   void on_axis_1_changed();
   void on_axis_2_changed();
@@ -30,6 +34,8 @@ private:
   
   std::array<Gtk::Scale*, 4> _scales;
   Gtk::CheckButton* _gripper_switch;
+  Gtk::Button* _record_button;
+  Gtk::Button* _play_button;
   
   axis_handler _axis_handler;
 };

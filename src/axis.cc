@@ -20,7 +20,7 @@ void axis_handler::set_active()
   _robot_inf.send_data<char>('\n');
 }
   
-void axis_handler::set_axis_angle(axis_type axis_t, double angle)
+void axis_handler::set_axis_angle(axis_type axis_t, double angle, bool is_recording)
 {
   int int_angle = static_cast<int>(angle);
   std::stringstream ss;
@@ -40,16 +40,42 @@ void axis_handler::set_axis_angle(axis_type axis_t, double angle)
       ss << "4:" << int_angle << std::endl;
       break;
     }
-  
+
+  if(!is_recording)
   _robot_inf.send_data<std::string>(ss.str());
+  else
+    _last_record << ss.str();
 }
 
-void axis_handler::set_gripper_status(bool status)
+void axis_handler::set_gripper_status(bool status, bool is_recording)
 {
-  _robot_inf.send_data<std::string>("G:");
-  if(status)
-    _robot_inf.send_data<bool>(std::move(status));
-  _robot_inf.send_data<char>('\n');
+  if(!is_recording)
+    {
+      _robot_inf.send_data<std::string>("G:");
+      _robot_inf.send_data<bool>(std::move(status));
+      _robot_inf.send_data<char>('\n');
+    }
+  else
+    {
+      _last_record << "G:";
+      _last_record << status << std::endl;
+    }
 }
-  
+
+void axis_handler::clear_last_record()
+{
+  _last_record.str(std::string());
+}
+
+void axis_handler::play_last_record()
+{
+  _robot_inf.send_record(_last_record.str());
+}
+
+std::string axis_handler::get_last_record()
+{
+  return _last_record.str();
+}
+
+
 }
