@@ -3,6 +3,7 @@ add_executable(robotkol
   rk_application.cc
   main_window.cc
   axis.cc
+  extern/SerialPort.cpp
   )
 
 target_link_libraries(robotkol ${GTKMM_LIBRARIES})

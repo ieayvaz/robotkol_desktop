@@ -13,7 +13,7 @@ main_window::main_window(BaseObjectType* cobject,
     _record_button(nullptr),
     _play_button(nullptr),
     _is_recording(false)
-{
+{ 
   for(auto& ref_scale : _scales)
     {
       ref_scale = nullptr;
@@ -49,7 +49,9 @@ main_window::main_window(BaseObjectType* cobject,
 
   _record_button->signal_clicked().connect
     (sigc::mem_fun(*this, &main_window::on_record_clicked));
-  
+
+  if(!_axis_handler.connect("\\\\.\\COM4"))
+    throw std::runtime_error("Port'a bağlanılamıyor!");
   _axis_handler.set_active();
 }
 
@@ -99,7 +101,16 @@ void main_window::on_gripper_toggled()
 
 void main_window::on_play_clicked()
 {
-  _axis_handler.play_last_record();
+  if(_axis_handler.check_last_record())
+    {
+      _axis_handler.play_last_record();
+    }
+  else
+    {
+      Gtk::MessageDialog record_not_exist(*this, "Hata!");
+      record_not_exist.set_secondary_text("Oynatacak Kayıt Bulunmamaktadır.");
+      record_not_exist.run();
+    }
 }
   
 void main_window::on_record_clicked()

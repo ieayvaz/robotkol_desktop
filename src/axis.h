@@ -25,7 +25,9 @@ public:
   std::string get_last_record();
   void play_last_record();
   void clear_last_record();
-  
+
+  bool check_last_record();
+  bool init(const std::string& port_adress);
 private:
   std::stringstream _last_record;
   robot_interface _robot_inf;

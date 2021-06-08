@@ -77,5 +77,14 @@ std::string axis_handler::get_last_record()
   return _last_record.str();
 }
 
+bool axis_handler::check_last_record()
+{
+  return _last_record.tellp() == std::streampos(0) ? false : true; 
+}
+
+bool axis_handler::init(const std::string& port_adress)
+{
+  return _robot_inf.connect(port_adress.c_str());
+}
 
 }
