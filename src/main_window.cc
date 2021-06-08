@@ -50,7 +50,7 @@ main_window::main_window(BaseObjectType* cobject,
   _record_button->signal_clicked().connect
     (sigc::mem_fun(*this, &main_window::on_record_clicked));
 
-  if(!_axis_handler.connect("\\\\.\\COM4"))
+  if(!_axis_handler.init("\\\\.\\COM4"))
     throw std::runtime_error("Port'a bağlanılamıyor!");
   _axis_handler.set_active();
 }
