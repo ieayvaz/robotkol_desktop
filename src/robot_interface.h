@@ -25,7 +25,7 @@ public:
     bool has_written = _serial_port->writeSerialPort(_buffer.str().c_str(), 255);
     if(!has_written)
       {
-	std::cout << "Veri Gönderilemiyor. Port Adresi : !" + _port_adress << std::endl;
+	std::cout << "Veri Gönderilemiyor. Port Adresi : " << _port_adress << std::endl;
 	return;
       }
   }
@@ -41,7 +41,7 @@ public:
 	bool has_written = _serial_port->writeSerialPort(buf.c_str(), 255);
 	if(!has_written)
 	  {
-	    std::cout << "Veri Gönderilemiyor. Port Adresi : !" + _port_adress << std::endl;
+	    std::cout << "Veri Gönderilemiyor. Port Adresi : " << _port_adress << std::endl;
 	    return;
 	  }
 	std::this_thread::sleep_for(std::chrono::seconds(2));
